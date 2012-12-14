@@ -768,11 +768,7 @@ public class PhoneStatusBar extends BaseStatusBar {
 
     private void prepareNavigationBarView() {
         mNavigationBarView.reorient();
-
-        mNavigationBarView.getRecentsButton().setOnClickListener(mRecentsClickListener);
-        mNavigationBarView.getRecentsButton().setOnTouchListener(mRecentsPreloadOnTouchListener);
-        mNavigationBarView.getHomeButton().setOnTouchListener(mHomeSearchActionListener);
-        mNavigationBarView.getSearchLight().setOnTouchListener(mHomeSearchActionListener);
+        mNavigationBarView.setListener(mRecentsClickListener,mRecentsPreloadOnTouchListener, mHomeSearchActionListener);
         updateSearchPanel();
     }
 
@@ -2292,6 +2288,7 @@ public class PhoneStatusBar extends BaseStatusBar {
             else if (Intent.ACTION_SCREEN_ON.equals(action)) {
                 // work around problem where mDisplay.getRotation() is not stable while screen is off (bug 7086018)
                 repositionNavigationBar();
+                mNavigationBarView.updateResources();
                 notifyNavigationBarScreenOn(true);
             }
         }
@@ -2455,7 +2452,7 @@ public class PhoneStatusBar extends BaseStatusBar {
     @Override
     protected boolean shouldDisableNavbarGestures() {
         return !isDeviceProvisioned()
-                || mExpandedVisible
+                || mExpandedVisible || NavigationBarView.getEditMode()
                 || (mDisabled & StatusBarManager.DISABLE_SEARCH) != 0;
     }
 
