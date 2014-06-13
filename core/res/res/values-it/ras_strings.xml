@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">   
+    <string name="reboot_system" product="tablet">Riavvio Nexus</string>
+    <string name="reboot_system" product="default">Riavvio Nexus</string>
+    <string name="reboot_reboot">Riavvio</string>
+    <string name="reboot_progress">Riavvio in corso\u2026</string>
+    <string name="reboot_confirm">Il tuo Nexus si riavvierà.</string>
+    <string name="global_action_reboot">Riavvia</string>
+    <string name="app_killed_message">Applicazione uccisa. Soddisfatto adesso?</string>
+</resources>
